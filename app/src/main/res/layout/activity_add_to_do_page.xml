@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/add_to_do_page_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bacground"
+    tools:context=".AddToDoPageActivity">
+
+
+  <androidx.appcompat.widget.Toolbar
+      android:id="@+id/add_to_do_page_toolbar"
+      android:layout_width="match_parent"
+      android:layout_height="80dp"
+      android:background="@color/main_color"
+      app:title="Eslatma qo'shing"
+      app:navigationIcon="@drawable/back_icon"
+      app:titleTextColor="@color/white"
+      android:paddingTop="20dp"/>
+
+  <com.google.android.material.card.MaterialCardView
+      android:id="@+id/card_title"
+      android:layout_width="match_parent"
+      android:layout_height="60dp"
+      android:layout_below="@id/add_to_do_page_toolbar"
+      android:layout_margin="16dp"
+      app:cardBackgroundColor="@color/white"
+      app:strokeColor="@color/main_color"
+      app:strokeWidth="1dp">
+    <EditText
+        android:id="@+id/edit_to_do_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8sp"
+        android:background="@android:color/transparent"
+        android:layout_gravity="center_vertical"
+        android:hint="Eslatma nomi:"
+        android:textColorHint="@color/main_color"
+        android:textColor="@color/black"
+        android:inputType="text"/>
+  </com.google.android.material.card.MaterialCardView>
+  <com.google.android.material.card.MaterialCardView
+      android:id="@+id/card_descreption"
+      android:layout_width="match_parent"
+      android:layout_height="60dp"
+      android:layout_below="@id/card_title"
+      android:layout_margin="16dp"
+      app:cardBackgroundColor="@color/white"
+      app:strokeColor="@color/main_color"
+      app:strokeWidth="1dp">
+    <EditText
+        android:id="@+id/edit_to_do_descreption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8sp"
+        android:background="@android:color/transparent"
+        android:layout_gravity="center_vertical"
+        android:hint="Eslatma haqida:"
+        android:textColorHint="@color/main_color"
+        android:textColor="@color/black"
+        android:inputType="text"/>
+  </com.google.android.material.card.MaterialCardView>
+  <com.google.android.material.card.MaterialCardView
+      android:id="@+id/card_this_day"
+      android:layout_width="match_parent"
+      android:layout_height="60dp"
+      android:layout_below="@id/card_descreption"
+      android:layout_margin="16dp"
+      app:cardBackgroundColor="@color/white"
+      app:strokeColor="@color/main_color"
+      app:strokeWidth="1dp">
+    <TextView
+        android:id="@+id/edit_to_do_this_day"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8sp"
+        android:layout_gravity="center_vertical"
+        android:hint="__/__/____"
+        android:textColor="@color/black"
+        android:textColorHint="@color/main_color"/>
+  </com.google.android.material.card.MaterialCardView>
+
+  <com.google.android.material.button.MaterialButton
+      android:id="@+id/save_to_do_list_button"
+      android:layout_width="match_parent"
+      android:layout_height="60dp"
+      android:backgroundTint="@color/main_color"
+      android:layout_alignParentBottom="true"
+      android:layout_margin="16dp"
+      android:text="Saqlash"
+      android:textColor="@color/white"
+      android:textSize="18sp"
+      android:textStyle="bold"/>
+
+</RelativeLayout>

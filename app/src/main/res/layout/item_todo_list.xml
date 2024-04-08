@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_root"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="16dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="@color/main_color"
+    app:cardBackgroundColor="#6BE7EAFB">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.3"
+            android:orientation="horizontal"
+            android:layout_marginRight="16dp"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/to_do_title"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                tools:text="Title"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:gravity="center_vertical"
+                android:layout_marginStart="16dp"/>
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:src="@drawable/edit_icon"
+                android:padding="4dp"/>
+
+            <ImageView
+                android:id="@+id/delete_to_do_list"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:src="@drawable/remove_icon"
+                android:padding="4dp"/>
+
+            <ImageView
+                android:id="@+id/is_main_to_do"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/check"
+                android:layout_weight="0.1"
+                android:padding="4dp"/>
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/to_do_description"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            tools:text="description"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="italic"
+            android:paddingHorizontal="16dp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:paddingHorizontal="16dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bajarilsh vaqti: "
+                    android:textSize="12sp"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:id="@+id/to_do_this_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="04/05/2024"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:textColor="@color/black"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Joylandi: "
+                    android:textSize="12sp"
+                    android:textColor="@color/black"/>
+                <TextView
+                    android:id="@+id/to_do_posted_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="04/05/2024"
+                    android:textStyle="bold"
+                    android:textSize="12sp"
+                    android:textColor="@color/black"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="bacground">#D0D7F3</color>
+    <color name="main_color">#1326A3</color>
+    <color name="bottom_menu_select_page">#1326A3</color>
+    <color name="bottom_menu_no_select_page">#151515</color>
+    <color name="menuIconColor">#1326A3</color>
+    <color name="menuTitleColor">#1326A3</color>
+</resources>
