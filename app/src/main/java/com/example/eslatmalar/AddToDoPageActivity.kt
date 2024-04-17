@@ -12,12 +12,13 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 import java.util.Calendar
 
-class AddToDoPageActivity : AppCompatActivity() {
-    private lateinit var sharedPreferencesHelper: SharedPreferencesHelper
+class AddToDoPageActivity: AppCompatActivity() {
     private lateinit var toDoAdapter: ToDoAdapter
     private lateinit var toDoTitle: EditText
-    private lateinit var toDoDescreption: EditText
+    private lateinit var toDoDescription: EditText
     private lateinit var toDoThisDay: TextView
+    private val sharedPreferencesHelper by lazy { SharedPreferencesHelper(this) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -25,23 +26,24 @@ class AddToDoPageActivity : AppCompatActivity() {
         findViewById<Toolbar>(R.id.add_to_do_page_toolbar).setNavigationOnClickListener {
             finish()
         }
-        sharedPreferencesHelper = SharedPreferencesHelper(this)
+
         toDoAdapter = ToDoAdapter(
             onClick = {},
             deleteToDoButton = {},
             isMainToDo = {}
         )
         toDoTitle = findViewById(R.id.edit_to_do_title)
-        toDoDescreption = findViewById(R.id.edit_to_do_descreption)
+        toDoDescription = findViewById(R.id.edit_to_do_descreption)
         toDoThisDay = findViewById(R.id.edit_to_do_this_day)
         findViewById<MaterialCardView>(R.id.card_this_day).setOnClickListener {
             showDatePicker()
         }
-        val saveToDoListButton = findViewById<MaterialButton>(R.id.save_to_do_list_button)
 
+        val saveToDoListButton = findViewById<MaterialButton>(R.id.save_to_do_list_button)
         saveToDoListButton.setOnClickListener {
             saveToDoList()
         }
+
         loadData()
     }
 
@@ -67,7 +69,7 @@ class AddToDoPageActivity : AppCompatActivity() {
 
     private fun saveToDoList() {
         val toDoTitle = toDoTitle.text.toString()
-        val toDoDescription = toDoDescreption.text.toString()
+        val toDoDescription = toDoDescription.text.toString()
         val toDoThisDay = toDoThisDay.text.toString()
 
         if (toDoTitle.isEmpty() || toDoDescription.isEmpty() || toDoThisDay.isEmpty()) {
@@ -77,10 +79,16 @@ class AddToDoPageActivity : AppCompatActivity() {
 
         val toDoModel = ToDoModel(toDoTitle, toDoDescription, toDoThisDay, getTime())
 
-        sharedPreferencesHelper.saveToDoList(toDoModel)
-        Toast.makeText(this, "Muvaffaqqiyatli qo'shildi", Toast.LENGTH_LONG).show()
-        finish()
-        loadData()
+        val dataList = sharedPreferencesHelper.getToDoList()?.toMutableList() ?: mutableListOf()
+        dataList.add(toDoModel)
+
+        val result = sharedPreferencesHelper.saveToDoList(dataList)
+        if (result) {
+            Toast.makeText(this, "Muvaffaqqiyatli qo'shildi", Toast.LENGTH_LONG).show()
+            finish()
+        } else {
+            Toast.makeText(this, "Xatolik yuz berdi", Toast.LENGTH_LONG).show()
+        }
     }
 
     private fun loadData() {

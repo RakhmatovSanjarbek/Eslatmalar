@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.eslatmalar.databinding.ActivityAllListPageBinding
@@ -24,21 +25,18 @@ class AllListPageActivity : AppCompatActivity() {
         binding = ActivityAllListPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        sharedPreferencesHelper = SharedPreferencesHelper(this)
+
         toDoAdapter = ToDoAdapter(
-            onClick = { position ->
-                Toast.makeText(this, "$position item bosildi", Toast.LENGTH_LONG).show()
-            },
+            onClick = {},
             deleteToDoButton = { position ->
                 showDeleteDialog(position)
             },
             isMainToDo = { position ->
                 replace(position)
-            }
+            },
         )
         toDoAdapter.setClickLissener()
-        sharedPreferencesHelper = SharedPreferencesHelper(this)
-
-
 
         rv = findViewById(R.id.all_list_page_rv)
         rv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
@@ -47,18 +45,19 @@ class AllListPageActivity : AppCompatActivity() {
         findViewById<CardView>(R.id.next_add_to_do_page).setOnClickListener {
             startActivity(nextPage())
         }
+        ItemTouchHelper(RvHelper(toDoAdapter)).attachToRecyclerView(rv)
     }
 
     private fun replace(position: Int) {
-        val dataList = sharedPreferencesHelper.getToDoList()
-        dataList?.get(position)?.isMainToDo = !dataList?.get(position)?.isMainToDo!!
+        val dataList = sharedPreferencesHelper.getToDoList()?.toMutableList() ?: mutableListOf()
+        dataList[position].isMainToDo = !dataList[position].isMainToDo
         if (dataList[position].isMainToDo) {
             val imageView = (rv.layoutManager as LinearLayoutManager).findViewByPosition(position)
                 ?.findViewById<ImageView>(R.id.is_main_to_do)
             imageView?.setImageResource(mainToDo())
             Toast.makeText(
                 this,
-                "$position Asosiy eslatmalar ro'yxatiga qo'shildi",
+                "Asosiy eslatmalar ro'yxatiga qo'shildi",
                 Toast.LENGTH_SHORT
             ).show()
         } else {
@@ -67,14 +66,12 @@ class AllListPageActivity : AppCompatActivity() {
             imageView?.setImageResource(noMainToDo())
             Toast.makeText(
                 this,
-                "$position Asosiy eslatmalar ro'yxatidan olindi",
+                "Asosiy eslatmalar ro'yxatidan olindi",
                 Toast.LENGTH_SHORT
             ).show()
         }
-        println(":::::: isMain  ${dataList[position].isMainToDo}")
-        loadData()
+        toDoAdapter.notifyItemToDoDataChanged(position)
     }
-
 
     override fun onResume() {
         super.onResume()

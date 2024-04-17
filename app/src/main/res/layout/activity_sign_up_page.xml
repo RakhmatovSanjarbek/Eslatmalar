@@ -87,7 +87,7 @@
         android:backgroundTint="@color/main_color"
         android:layout_alignParentBottom="true"
         android:layout_margin="16dp"
-        android:text="Ro'yxatdan o'tish"
+        android:text="Kengisi"
         android:textColor="@color/white"
         android:textSize="18sp"
         android:textStyle="bold"/>

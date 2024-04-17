@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="4dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="16dp"
+        app:cardBackgroundColor="@color/bacground"
+        app:strokeColor="@color/main_color"
+        app:strokeWidth="1dp">
+        <EditText
+            android:id="@+id/et_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8sp"
+            android:background="@android:color/transparent"
+            android:layout_gravity="center_vertical"
+            android:hint="Eslatma nomi:"
+            android:textColorHint="@color/main_color"
+            android:textColor="@color/black"
+            android:inputType="text"/>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="16dp"
+        app:cardBackgroundColor="@color/bacground"
+        app:strokeColor="@color/main_color"
+        app:strokeWidth="1dp">
+        <EditText
+            android:id="@+id/et_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8sp"
+            android:background="@android:color/transparent"
+            android:layout_gravity="center_vertical"
+            android:hint="Eslatma haqida:"
+            android:textColorHint="@color/main_color"
+            android:textColor="@color/black"
+            android:inputType="text"/>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_new_this_day"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@id/card_descreption"
+        android:layout_margin="16dp"
+        app:cardBackgroundColor="@color/bacground"
+        app:strokeColor="@color/main_color"
+        app:strokeWidth="1dp">
+        <EditText
+            android:id="@+id/et_this_day"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8sp"
+            android:layout_gravity="center_vertical"
+            android:hint="__/__/____"
+            android:textColor="@color/black"
+            android:background="@android:color/transparent"
+            android:textColorHint="@color/main_color"
+            android:inputType="date"/>
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>
