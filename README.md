@@ -1,4 +1,4 @@
- #Eslatmalar
+# Eslatmelar
 
 ![Screenshot 2025-07-08 143222](https://github.com/user-attachments/assets/a05a5dd8-b480-4359-8329-845da0ec2317)
 ![Screenshot 2025-07-08 143428](https://github.com/user-attachments/assets/59210a40-1750-42f4-a3a2-64325424881c)
